@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Страница не найдена | SwarmCraft</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #0f1419;
+            color: #f0f0f0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            width: 100%;
+        }
+        
+        header {
+            padding: 30px 0;
+            border-bottom: 1px solid #2a2f35;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 28px;
+            font-weight: 700;
+            color: #ffcc00;
+            text-shadow: 0 0 8px rgba(255, 204, 0, 0.3);
+        }
+        
+        .logo i {
+            color: #ffcc00;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .error-code {
+            font-size: 160px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffcc00, #ff9900, #ff6600);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1;
+            margin-bottom: 20px;
+            text-shadow: 0 0 30px rgba(255, 153, 0, 0.3);
+            position: relative;
+        }
+        
+        .error-code::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255, 204, 0, 0.1) 0%, transparent 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            border-radius: 50%;
+        }
+        
+        .error-title {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #f0f0f0;
+        }
+        
+        .error-description {
+            font-size: 18px;
+            color: #b0b0b0;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+        
+        .home-button {
+            display: inline-block;
+            padding: 18px 42px;
+            font-size: 18px;
+            font-weight: 600;
+            text-decoration: none;
+            color: #0f1419;
+            background: linear-gradient(90deg, #ffcc00, #ff9900, #ff6600, #ff9900, #ffcc00);
+            background-size: 400% 100%;
+            border-radius: 50px;
+            box-shadow: 0 8px 25px rgba(255, 153, 0, 0.3);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            animation: gradient-shift 3s infinite linear;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+        .home-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(255, 153, 0, 0.5);
+        }
+        
+        .home-button:active {
+            transform: translateY(-2px);
+        }
+        
+        .home-button i {
+            margin-right: 10px;
+        }
+        
+        .bee-animation {
+            margin: 40px 0;
+            position: relative;
+            width: 100%;
+            height: 80px;
+        }
+        
+        .bee {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(45deg, #ffcc00, #ff9900);
+            border-radius: 50% 50% 50% 0;
+            transform: rotate(-45deg);
+            box-shadow: 0 0 10px rgba(255, 204, 0, 0.7);
+            animation: bee-flight 8s infinite ease-in-out;
+        }
+        
+        .bee::before, .bee::after {
+            content: '';
+            position: absolute;
+            background-color: #0f1419;
+            border-radius: 50%;
+        }
+        
+        .bee::before {
+            width: 10px;
+            height: 10px;
+            top: 8px;
+            left: 6px;
+        }
+        
+        .bee::after {
+            width: 5px;
+            height: 5px;
+            top: 5px;
+            left: 20px;
+        }
+        
+        .bee.wing-left, .bee.wing-right {
+            position: absolute;
+            width: 25px;
+            height: 15px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            top: -5px;
+            animation: bee-wings 0.2s infinite alternate;
+        }
+        
+        .bee.wing-left {
+            left: 5px;
+            transform: rotate(-20deg);
+        }
+        
+        .bee.wing-right {
+            left: 20px;
+            transform: rotate(20deg);
+            animation-delay: 0.1s;
+        }
+        
+        footer {
+            background-color: #0a0e12;
+            padding: 30px 0;
+            border-top: 1px solid #2a2f35;
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        .copyright {
+            font-size: 16px;
+            color: #b0b0b0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .copyright i {
+            color: #ffcc00;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 400% 50%; }
+        }
+        
+        @keyframes bee-flight {
+            0%, 100% { 
+                left: 5%; 
+                top: 20px;
+            }
+            25% { 
+                left: 30%; 
+                top: 50px;
+            }
+            50% { 
+                left: 60%; 
+                top: 10px;
+            }
+            75% { 
+                left: 85%; 
+                top: 40px;
+            }
+        }
+        
+        @keyframes bee-wings {
+            from { transform: scaleY(1); }
+            to { transform: scaleY(1.3); }
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+        
+        .honeycomb-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            opacity: 0.05;
+            background-image: 
+                radial-gradient(circle at 25% 25%, #ffcc00 2px, transparent 2px),
+                radial-gradient(circle at 75% 75%, #ff9900 2px, transparent 2px);
+            background-size: 60px 60px;
+        }
+        
+        @media (max-width: 768px) {
+            .error-code {
+                font-size: 120px;
+            }
+            
+            .error-title {
+                font-size: 26px;
+            }
+            
+            .error-description {
+                font-size: 16px;
+                padding: 0 20px;
+            }
+            
+            .home-button {
+                padding: 15px 35px;
+                font-size: 16px;
+            }
+            
+            .logo {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="honeycomb-bg"></div>
+    
+    <header>
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-honey-pot"></i>
+                <span>SwarmCraft</span>
+            </div>
+        </div>
+    </header>
+    
+    <main class="main-content">
+        <div class="container">
+            <div class="error-code">404</div>
+            <h1 class="error-title">Ой! Страница улетела к пчёлам</h1>
+            <p class="error-description">Запрашиваемая вами страница не найдена. Возможно, она была перемещена, удалена или вы ввели неправильный адрес. Но не переживайте — наши пчёлки уже ищут её!</p>
+            
+            <div class="bee-animation">
+                <div class="bee">
+                    <div class="wing-left"></div>
+                    <div class="wing-right"></div>
+                </div>
+            </div>
+            
+            <a href="/" class="home-button">
+                <i class="fas fa-home"></i> Вернуться на главную
+            </a>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="copyright">
+                <i class="fas fa-copyright"></i>
+                <span>SwarmCraft, все права защищены. С любовью от пчёлок! <i class="fas fa-heart" style="color: #ff6600; margin: 0 5px;"></i> 2026</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Добавление дополнительных пчелок
+        document.addEventListener('DOMContentLoaded', function() {
+            const beeContainer = document.querySelector('.bee-animation');
+            
+            for (let i = 0; i < 3; i++) {
+                const bee = document.createElement('div');
+                bee.className = 'bee';
+                
+                const wingLeft = document.createElement('div');
+                wingLeft.className = 'wing-left';
+                
+                const wingRight = document.createElement('div');
+                wingRight.className = 'wing-right';
+                
+                bee.appendChild(wingLeft);
+                bee.appendChild(wingRight);
+                
+                // Случайная задержка и позиция для каждой пчелы
+                const delay = Math.random() * 5;
+                const topOffset = 20 + Math.random() * 40;
+                
+                bee.style.animationDelay = `${delay}s`;
+                bee.style.top = `${topOffset}px`;
+                bee.style.opacity = 0.6 + Math.random() * 0.4;
+                bee.style.width = `${30 + Math.random() * 20}px`;
+                bee.style.height = bee.style.width;
+                
+                beeContainer.appendChild(bee);
+            }
+            
+            // Анимация кнопки при наведении
+            const homeButton = document.querySelector('.home-button');
+            homeButton.addEventListener('mouseenter', function() {
+                this.style.animationPlayState = 'paused';
+            });
+            
+            homeButton.addEventListener('mouseleave', function() {
+                this.style.animationPlayState = 'running';
+            });
+        });
+    </script>
+</body>
+</html>
