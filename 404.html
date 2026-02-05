@@ -14,12 +14,16 @@
         }
         
         body {
-            background-color: #0f1419;
+            background-color: #1a1f2e;
             color: #f0f0f0;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             overflow-x: hidden;
+            background-image: 
+                linear-gradient(rgba(10, 15, 30, 0.7), rgba(10, 15, 30, 0.7)),
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%231a1f2e"/><rect x="0" y="0" width="10" height="10" fill="%232a3550"/><rect x="20" y="0" width="10" height="10" fill="%232a3550"/><rect x="40" y="0" width="10" height="10" fill="%232a3550"/><rect x="60" y="0" width="10" height="10" fill="%232a3550"/><rect x="80" y="0" width="10" height="10" fill="%232a3550"/><rect x="10" y="10" width="10" height="10" fill="%232a3550"/><rect x="30" y="10" width="10" height="10" fill="%232a3550"/><rect x="50" y="10" width="10" height="10" fill="%232a3550"/><rect x="70" y="10" width="10" height="10" fill="%232a3550"/><rect x="90" y="10" width="10" height="10" fill="%232a3550"/></svg>');
+            background-size: 100px 100px;
         }
         
         .container {
@@ -31,7 +35,7 @@
         
         header {
             padding: 30px 0;
-            border-bottom: 1px solid #2a2f35;
+            border-bottom: 2px solid #3a4a6b;
         }
         
         .logo {
@@ -41,12 +45,13 @@
             font-size: 28px;
             font-weight: 700;
             color: #ffcc00;
-            text-shadow: 0 0 8px rgba(255, 204, 0, 0.3);
+            text-shadow: 2px 2px 0 #8b6914, 4px 4px 0 rgba(0, 0, 0, 0.5);
         }
         
         .logo i {
             color: #ffcc00;
             animation: float 3s ease-in-out infinite;
+            text-shadow: 2px 2px 0 #8b6914;
         }
         
         .main-content {
@@ -68,8 +73,10 @@
             color: transparent;
             line-height: 1;
             margin-bottom: 20px;
-            text-shadow: 0 0 30px rgba(255, 153, 0, 0.3);
+            text-shadow: 4px 4px 0 #8b6914, 8px 8px 0 rgba(0, 0, 0, 0.5);
             position: relative;
+            font-family: 'Minecraft', monospace;
+            letter-spacing: 5px;
         }
         
         .error-code::after {
@@ -89,6 +96,8 @@
             font-size: 32px;
             margin-bottom: 20px;
             color: #f0f0f0;
+            text-shadow: 1px 1px 0 #3a4a6b;
+            font-family: 'Minecraft', monospace;
         }
         
         .error-description {
@@ -97,6 +106,11 @@
             max-width: 600px;
             margin: 0 auto 40px;
             line-height: 1.6;
+            background-color: rgba(30, 35, 50, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #3a4a6b;
+            box-shadow: 4px 4px 0 #0a0f1a;
         }
         
         .home-button {
@@ -105,27 +119,31 @@
             font-size: 18px;
             font-weight: 600;
             text-decoration: none;
-            color: #0f1419;
+            color: #1a1f2e;
             background: linear-gradient(90deg, #ffcc00, #ff9900, #ff6600, #ff9900, #ffcc00);
             background-size: 400% 100%;
-            border-radius: 50px;
-            box-shadow: 0 8px 25px rgba(255, 153, 0, 0.3);
-            transition: all 0.4s ease;
+            border-radius: 0;
+            box-shadow: 0 8px 0 #8b6914, 0 12px 25px rgba(255, 153, 0, 0.3);
+            transition: all 0.2s ease;
             position: relative;
             overflow: hidden;
             animation: gradient-shift 3s infinite linear;
-            border: none;
+            border: 3px solid #8b6914;
             cursor: pointer;
             margin-top: 10px;
+            font-family: 'Minecraft', monospace;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
         
         .home-button:hover {
             transform: translateY(-5px);
-            box-shadow: 0 12px 30px rgba(255, 153, 0, 0.5);
+            box-shadow: 0 12px 0 #8b6914, 0 17px 30px rgba(255, 153, 0, 0.5);
         }
         
         .home-button:active {
-            transform: translateY(-2px);
+            transform: translateY(2px);
+            box-shadow: 0 4px 0 #8b6914, 0 8px 15px rgba(255, 153, 0, 0.3);
         }
         
         .home-button i {
@@ -136,68 +154,78 @@
             margin: 40px 0;
             position: relative;
             width: 100%;
-            height: 80px;
+            height: 120px;
         }
         
-        .bee {
+        /* Minecraft-style bee */
+        .minecraft-bee {
             position: absolute;
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(45deg, #ffcc00, #ff9900);
-            border-radius: 50% 50% 50% 0;
-            transform: rotate(-45deg);
-            box-shadow: 0 0 10px rgba(255, 204, 0, 0.7);
-            animation: bee-flight 8s infinite ease-in-out;
+            width: 60px;
+            height: 60px;
+            background: 
+                /* Тело пчелы - пиксельный стиль Minecraft */
+                linear-gradient(45deg, transparent 20%, #ffcc00 20%, #ffcc00 80%, transparent 80%),
+                /* Черные полосы */
+                linear-gradient(to right, 
+                    transparent 15%, #1a1f2e 15%, #1a1f2e 25%, transparent 25%,
+                    transparent 40%, #1a1f2e 40%, #1a1f2e 50%, transparent 50%,
+                    transparent 65%, #1a1f2e 65%, #1a1f2e 75%, transparent 75%);
+            background-size: 100% 100%, 100% 100%;
+            background-repeat: no-repeat;
+            border: 2px solid #8b6914;
+            animation: minecraft-bee-flight 10s infinite ease-in-out;
+            image-rendering: pixelated;
         }
         
-        .bee::before, .bee::after {
+        /* Minecraft крылья */
+        .minecraft-bee::before, .minecraft-bee::after {
             content: '';
             position: absolute;
-            background-color: #0f1419;
-            border-radius: 50%;
-        }
-        
-        .bee::before {
-            width: 10px;
-            height: 10px;
-            top: 8px;
-            left: 6px;
-        }
-        
-        .bee::after {
-            width: 5px;
-            height: 5px;
-            top: 5px;
-            left: 20px;
-        }
-        
-        .bee.wing-left, .bee.wing-right {
-            position: absolute;
             width: 25px;
-            height: 15px;
-            background-color: rgba(255, 255, 255, 0.8);
-            border-radius: 50%;
-            top: -5px;
-            animation: bee-wings 0.2s infinite alternate;
+            height: 40px;
+            background-color: rgba(200, 230, 255, 0.8);
+            border: 2px solid #a0c0ff;
+            border-radius: 2px;
+            top: -10px;
+            animation: minecraft-wings 0.3s infinite alternate;
         }
         
-        .bee.wing-left {
+        .minecraft-bee::before {
             left: 5px;
             transform: rotate(-20deg);
         }
         
-        .bee.wing-right {
-            left: 20px;
+        .minecraft-bee::after {
+            left: 30px;
             transform: rotate(20deg);
-            animation-delay: 0.1s;
+            animation-delay: 0.15s;
+        }
+        
+        /* Minecraft глаза */
+        .minecraft-bee .eye {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background-color: #1a1f2e;
+            border: 1px solid #0a0f1a;
+            top: 15px;
+        }
+        
+        .minecraft-bee .eye.left {
+            left: 10px;
+        }
+        
+        .minecraft-bee .eye.right {
+            left: 40px;
         }
         
         footer {
-            background-color: #0a0e12;
+            background-color: #0a0f1a;
             padding: 30px 0;
-            border-top: 1px solid #2a2f35;
+            border-top: 3px solid #3a4a6b;
             text-align: center;
             margin-top: 40px;
+            box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.5);
         }
         
         .copyright {
@@ -207,11 +235,24 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
+            flex-wrap: wrap;
         }
         
         .copyright i {
             color: #ffcc00;
             animation: bounce 2s infinite;
+            text-shadow: 1px 1px 0 #8b6914;
+        }
+        
+        .copyright .minecraft-text {
+            font-family: 'Minecraft', monospace;
+            color: #ffcc00;
+            text-shadow: 1px 1px 0 #8b6914;
+        }
+        
+        .copyright .year {
+            color: #ff9900;
+            font-weight: bold;
         }
         
         @keyframes float {
@@ -224,28 +265,42 @@
             100% { background-position: 400% 50%; }
         }
         
-        @keyframes bee-flight {
+        @keyframes minecraft-bee-flight {
             0%, 100% { 
                 left: 5%; 
-                top: 20px;
+                top: 30px;
+                transform: scaleX(1);
             }
-            25% { 
-                left: 30%; 
-                top: 50px;
-            }
-            50% { 
-                left: 60%; 
+            20% { 
+                left: 25%; 
                 top: 10px;
             }
-            75% { 
+            40% { 
+                left: 45%; 
+                top: 60px;
+                transform: scaleX(1);
+            }
+            60% { 
+                left: 65%; 
+                top: 20px;
+                transform: scaleX(-1);
+            }
+            80% { 
                 left: 85%; 
-                top: 40px;
+                top: 50px;
+                transform: scaleX(-1);
             }
         }
         
-        @keyframes bee-wings {
-            from { transform: scaleY(1); }
-            to { transform: scaleY(1.3); }
+        @keyframes minecraft-wings {
+            from { 
+                transform: rotate(-20deg) scaleY(1);
+                left: 5px;
+            }
+            to { 
+                transform: rotate(-20deg) scaleY(1.2);
+                left: 3px;
+            }
         }
         
         @keyframes bounce {
@@ -254,7 +309,7 @@
             60% { transform: translateY(-5px); }
         }
         
-        .honeycomb-bg {
+        .minecraft-block-bg {
             position: absolute;
             width: 100%;
             height: 100%;
@@ -262,15 +317,20 @@
             left: 0;
             z-index: -1;
             opacity: 0.05;
-            background-image: 
-                radial-gradient(circle at 25% 25%, #ffcc00 2px, transparent 2px),
-                radial-gradient(circle at 75% 75%, #ff9900 2px, transparent 2px);
-            background-size: 60px 60px;
+            pointer-events: none;
+        }
+        
+        .minecraft-border {
+            border: 3px solid #3a4a6b;
+            box-shadow: 6px 6px 0 #0a0f1a;
+            padding: 15px;
+            background-color: rgba(30, 35, 50, 0.8);
         }
         
         @media (max-width: 768px) {
             .error-code {
                 font-size: 120px;
+                letter-spacing: 3px;
             }
             
             .error-title {
@@ -279,7 +339,8 @@
             
             .error-description {
                 font-size: 16px;
-                padding: 0 20px;
+                padding: 15px;
+                margin: 0 10px 30px;
             }
             
             .home-button {
@@ -290,16 +351,40 @@
             .logo {
                 font-size: 24px;
             }
+            
+            .copyright {
+                flex-direction: column;
+                gap: 5px;
+            }
+        }
+        
+        /* Minecraft шрифт */
+        @font-face {
+            font-family: 'Minecraft';
+            src: url('https://fonts.cdnfonts.com/s/14185/MinecraftTen.woff') format('woff');
+        }
+        
+        .shop-link {
+            color: #ffcc00;
+            text-decoration: none;
+            border-bottom: 1px dashed #ffcc00;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+        
+        .shop-link:hover {
+            color: #ff9900;
+            border-bottom: 1px solid #ff9900;
         }
     </style>
 </head>
 <body>
-    <div class="honeycomb-bg"></div>
+    <div class="minecraft-block-bg"></div>
     
     <header>
         <div class="container">
             <div class="logo">
-                <i class="fas fa-honey-pot"></i>
+                <i class="fas fa-cube"></i>
                 <span>SwarmCraft</span>
             </div>
         </div>
@@ -308,19 +393,26 @@
     <main class="main-content">
         <div class="container">
             <div class="error-code">404</div>
-            <h1 class="error-title">Ой! Страница улетела к пчёлам</h1>
-            <p class="error-description">Запрашиваемая вами страница не найдена. Возможно, она была перемещена, удалена или вы ввели неправильный адрес. Но не переживайте — наши пчёлки уже ищут её!</p>
-            
-            <div class="bee-animation">
-                <div class="bee">
-                    <div class="wing-left"></div>
-                    <div class="wing-right"></div>
-                </div>
+            <h1 class="error-title">Блок не найден!</h1>
+            <div class="minecraft-border">
+                <p class="error-description">
+                    Запрашиваемая вами страница отсутствует в этом измерении. 
+                    Возможно, её разобрали на ресурсы или креапер взорвал. 
+                    Но не переживайте — наши майнкрафтовские пчёлки уже ищут её в ульях!
+                </p>
             </div>
             
-            <a href="/" class="home-button">
-                <i class="fas fa-home"></i> Вернуться на главную
+            <div class="bee-animation">
+                <!-- Minecraft пчелки будут добавлены через JS -->
+            </div>
+            
+            <a href="https://shop.swarmcraft.fun" class="home-button">
+                <i class="fas fa-store"></i> Вернуться в магазин
             </a>
+            
+            <p style="margin-top: 30px; color: #b0b0b0;">
+                Или перейдите на <a href="https://shop.swarmcraft.fun" class="shop-link">главную страницу магазина</a>
+            </p>
         </div>
     </main>
     
@@ -328,38 +420,58 @@
         <div class="container">
             <div class="copyright">
                 <i class="fas fa-copyright"></i>
-                <span>SwarmCraft, все права защищены. С любовью от пчёлок! <i class="fas fa-heart" style="color: #ff6600; margin: 0 5px;"></i> 2026</span>
+                <span class="minecraft-text">SwarmCraft</span>
+                <span>Все права защищены</span>
+                <i class="fas fa-bug"></i>
+                <span>Майнкрафтовскими пчёлками</span>
+                <i class="fas fa-heart" style="color: #ff6600; margin: 0 5px;"></i>
+                <span class="year">2026</span>
             </div>
         </div>
     </footer>
 
     <script>
-        // Добавление дополнительных пчелок
+        // Добавление майнкрафтовских пчелок
         document.addEventListener('DOMContentLoaded', function() {
             const beeContainer = document.querySelector('.bee-animation');
             
-            for (let i = 0; i < 3; i++) {
+            // Создаем несколько майнкрафтовских пчелок
+            for (let i = 0; i < 4; i++) {
                 const bee = document.createElement('div');
-                bee.className = 'bee';
+                bee.className = 'minecraft-bee';
                 
-                const wingLeft = document.createElement('div');
-                wingLeft.className = 'wing-left';
+                // Создаем глаза для пчелы
+                const eyeLeft = document.createElement('div');
+                eyeLeft.className = 'eye left';
                 
-                const wingRight = document.createElement('div');
-                wingRight.className = 'wing-right';
+                const eyeRight = document.createElement('div');
+                eyeRight.className = 'eye right';
                 
-                bee.appendChild(wingLeft);
-                bee.appendChild(wingRight);
+                bee.appendChild(eyeLeft);
+                bee.appendChild(eyeRight);
                 
-                // Случайная задержка и позиция для каждой пчелы
+                // Случайные параметры для каждой пчелы
                 const delay = Math.random() * 5;
-                const topOffset = 20 + Math.random() * 40;
+                const topOffset = 20 + Math.random() * 50;
+                const size = 40 + Math.random() * 30;
+                const speed = 8 + Math.random() * 7;
                 
                 bee.style.animationDelay = `${delay}s`;
+                bee.style.animationDuration = `${speed}s`;
                 bee.style.top = `${topOffset}px`;
-                bee.style.opacity = 0.6 + Math.random() * 0.4;
-                bee.style.width = `${30 + Math.random() * 20}px`;
-                bee.style.height = bee.style.width;
+                bee.style.opacity = 0.7 + Math.random() * 0.3;
+                bee.style.width = `${size}px`;
+                bee.style.height = `${size}px`;
+                
+                // Случайный цвет пчелы (варианты желтого)
+                const hue = 40 + Math.random() * 20; // оттенки желтого/оранжевого
+                bee.style.background = `
+                    linear-gradient(45deg, transparent 20%, hsl(${hue}, 100%, 50%) 20%, hsl(${hue}, 100%, 50%) 80%, transparent 80%),
+                    linear-gradient(to right, 
+                        transparent 15%, #1a1f2e 15%, #1a1f2e 25%, transparent 25%,
+                        transparent 40%, #1a1f2e 40%, #1a1f2e 50%, transparent 50%,
+                        transparent 65%, #1a1f2e 65%, #1a1f2e 75%, transparent 75%)
+                `;
                 
                 beeContainer.appendChild(bee);
             }
@@ -373,6 +485,32 @@
             homeButton.addEventListener('mouseleave', function() {
                 this.style.animationPlayState = 'running';
             });
+            
+            // Добавляем эффект пикселизации при клике
+            const elements = document.querySelectorAll('.error-code, .error-title, .home-button');
+            elements.forEach(el => {
+                el.addEventListener('click', function() {
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = 'scale(1)';
+                    }, 100);
+                });
+            });
+            
+            // Создаем пиксельный фон
+            const bg = document.querySelector('.minecraft-block-bg');
+            for (let i = 0; i < 50; i++) {
+                const block = document.createElement('div');
+                block.style.position = 'absolute';
+                block.style.width = '20px';
+                block.style.height = '20px';
+                block.style.left = Math.random() * 100 + '%';
+                block.style.top = Math.random() * 100 + '%';
+                block.style.backgroundColor = Math.random() > 0.5 ? '#ffcc00' : '#8b6914';
+                block.style.opacity = '0.03';
+                block.style.border = '1px solid ' + (Math.random() > 0.5 ? '#ff9900' : '#3a4a6b');
+                bg.appendChild(block);
+            }
         });
     </script>
 </body>
